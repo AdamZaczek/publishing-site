@@ -3,12 +3,34 @@
 <head>
   <title>Workspace</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="sidebar">
+		<div id="logo">
+			<%= link_to root_path do %>
+				<%= image_tag "indeks.svg" %>
+			<% end %>
+		</div>
 
+		<ul>
+			<li class="category">Website</li>
+			<li><%= link_to "Blog", root_path %></li>
+			<li>About</li>
+		</ul>
+
+		<ul>
+			<li class="category">Social</li>
+			<li><a href="https://www.facebook.com/adam.zaczek">Facebook</a></li>
+			<li><a href="https://www.instagram.com/skateboardingisalifestyle/">Instagram</a></li>
+			<li><a href="https://github.com/AdamZaczek">Github</a></li>
+			<li><a href="mailto:adamzaczekul@gmail.com">Email</a></li>
+		</ul>
+</div>
+<div id="main_content">
 <%= yield %>
-
+</div>
 </body>
 </html>
