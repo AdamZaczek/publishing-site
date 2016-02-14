@@ -4,9 +4,9 @@
     </h1>
     
     <p class="date">
-        Submitted <%= time_ago_in_words(@post.created_at) %> Ago
+        Submitted <%= time_ago_in_words(@post.created_at) %> Ago |
+        <%= link_to "Edit post", edit_post_path %>
     </p>
-    
     <p class="content">
         <%= @post.content %>
     </p>

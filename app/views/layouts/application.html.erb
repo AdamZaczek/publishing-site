@@ -34,8 +34,8 @@
 	<div id="header">
 		<p>All posts</p>
 		<div class="buttons">
-			<button class="button"><%= link_to "New Post", new_post_path %></button>
-			<button class="button">Log Out</button>
+			<%= link_to "New Posts", new_post_path %>
+			<%= link_to "Log Out", '#' %>
 		</div>
 	</div>
 		<% flash.each do |name, msg| %>
