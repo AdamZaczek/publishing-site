@@ -1,0 +1,10 @@
+<%= simple_form_for @post do |f| %>
+            	<% if @post.errors.any? %>
+	<div id="errors">
+		<h4><%= pluralize(@post.errors.count, "error") %> prevented this post from saving:</h4>
+	</div>
+	<% end %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+<% end %>
