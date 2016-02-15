@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_login
+  before_action :require_login, except: [:index, :show]
   
 	def index
 		@posts = Post.all.order('created_at DESC')

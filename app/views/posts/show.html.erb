@@ -1,14 +1,22 @@
-<div class="post_wrapper">
-    <h1 class="title">
+<div id="post_content">
+    <h1 class="title"><strong>
         <%= @post.title %>
-    </h1>
+    </strong></h1>
     
     <p class="date">
-        Submitted <%= time_ago_in_words(@post.created_at) %> Ago |
-        <%= link_to "Edit post", edit_post_path %> |
+        Submitted <%= time_ago_in_words(@post.created_at) %> Ago
+        <% if logged_in? %>
+        | <%= link_to "Edit post", edit_post_path %> |
         <%= link_to "Delete post", post_path, method: :delete, data: { confirm:"You are about to destroy this post, are you sure?" } %>
+        <% end %>
     </p>
-    <p class="content">
-        <%= @post.content %>
-    </p>
+    <p class="content"><%= @post.content %></p>
+    
+    	<div id="comments">
+		<p><%= @post.comments.count %> Comments</p>
+		<p class="body"><%= render @post.comments %></p>
+
+		<h3>Add a comment:</h3>
+		<%= render "comments/form" %>
+	</div>
 </div>
