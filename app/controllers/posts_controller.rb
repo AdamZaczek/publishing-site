@@ -1,18 +1,18 @@
 class PostsController < ApplicationController
+  
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  
 	def index
 		@posts = Post.all.order('created_at DESC')
 	end
 
 	def new
-		@post = Post.new
-	end
-
-	def show
-		@post = Post.find(params[:id])
+	  @post = current_user.posts.build
 	end
 
 	def create
-		@post = Post.new(post_params)
+		@post = current_user.posts.build(post_params)
 
 		if @post.save
 			redirect_to @post
@@ -20,25 +20,27 @@ class PostsController < ApplicationController
 			render 'new'
 		end
 	end
-    
-    def edit
-      @post = Post.find(params[:id])
-    end
-    
-    def update
-      @post = Post.find(params[:id])
-      
-      if @post.update_attributes(post_params)
-        redirect_to @post
-      else
-        render 'edit'
-      end
-    end
+
+	
+	def show
+	end
+	
+	
+	def edit
+	end
+	
+	def update
+	
+	if @post.update_attributes(post_params)
+	  redirect_to @post
+	else
+	  render 'edit'
+	end
+	end
     
 	def destroy
-		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to posts_path
+		redirect_to root_path
 	end
     
     
@@ -46,5 +48,9 @@ class PostsController < ApplicationController
 
 	def post_params
 		params.require(:post).permit(:title, :content)
+	end
+	
+	def find_post
+		@post = Post.find(params[:id])
 	end
 end

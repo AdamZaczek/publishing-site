@@ -1,0 +1,6 @@
+<<% @users.each do |user| %>
+	<div class="post_wrapper">
+		<h2 class="title"><%= link_to user.email, user %></h2>
+		<p class="date"><%= user.created_at.strftime("%B %d, %Y") %></p>
+	</div>
+<% end %>
