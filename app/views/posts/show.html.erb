@@ -1,11 +1,12 @@
 <div id="post_content">
-    <h1 class="title"><strong>
+    <h4 class="title"><strong>
         <%= @post.title %>
-    </strong></h1>
+    </strong></h4>
     
     <p class="date">
-        Submitted <%= time_ago_in_words(@post.created_at) %> Ago
-        <% if logged_in? %>
+        Submitted <%= time_ago_in_words(@post.created_at) %> Ago by
+        <%= @post.user.email %>
+        <% if @post.user == current_user %>
         | <%= link_to "Edit post", edit_post_path %> |
         <%= link_to "Delete post", post_path, method: :delete, data: { confirm:"You are about to destroy this post, are you sure?" } %>
         <% end %>

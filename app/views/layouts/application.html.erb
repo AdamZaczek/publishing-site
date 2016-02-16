@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>Social App</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -16,13 +16,13 @@
 		</div>
 
 		<ul>
-			<li class="category">Website</li>
+			<li class="category"><h4><Website</h4></li>
 			<li><%= link_to "Blog", root_path %></li>
 			<li><%= link_to "About", about_path %></li>
 		</ul>
 
 		<ul>
-			<li class="category">Social</li>
+			<li class="category"><h4>Social</h4></li>
 			<li><a href="https://www.facebook.com/adam.zaczek">Facebook</a></li>
 			<li><a href="https://www.instagram.com/skateboardingisalifestyle/">Instagram</a></li>
 			<li><a href="https://github.com/AdamZaczek">Github</a></li>
@@ -31,23 +31,19 @@
 </div>
 <div id="main_content">
 	<div id="header">
-		<p>All posts</p>
-		
+		<p>Headquarters</p>
 		  <div id="nav", class="buttons">
 			<% if current_page?(root_path) %>
 				<p>All Posts</p>
 			<% elsif current_page?(about_path) %>
 				<p>About</p>
 			<% else %>
-				<%= link_to "Back to All Posts", root_path %>
+				<%= link_to "Back to posts", root_path %>
 			<% end %>
 			
-			<% if current_user %>
-				<div class="buttons">
-					<button class="button"><%= link_to "New Post", new_post_path %></button>
-				</div>
-				<% end %>
-				<% if current_user %>
+
+		<% if current_user %>
+			<%= link_to "New Post", new_post_path %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "button" %>
       <%= link_to "Logout", :logout, method: :post, class: "button" %>
     <% else %>
